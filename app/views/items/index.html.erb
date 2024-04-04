@@ -1,0 +1,11 @@
+<!-- app/views/items/index.html.erb -->
+<h1>Items</h1>
+
+<p>w</p>
+<p>Current User: <%= @current_user.name %></p>
+
+<ul>
+  <% @items.each do |item| %>
+    <li><%= item.title %>: <%= item.description %></li>
+  <% end %>
+</ul>
