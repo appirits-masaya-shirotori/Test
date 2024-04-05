@@ -1,4 +1,13 @@
 # README
+## 仕様
+Home
+ユーザー登録
+アイテム登録
+ユーザーごとのアイテム一覧表示　← 一覧出ない
+
+ ## 問題点
+ ベージの戻るボタンUIが無い
+### 
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -22,3 +31,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+  
