@@ -30,4 +30,8 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:title, :description, :user_id)
   end
+  def select_user
+      # フォームから送信されたユーザーIDを使用してリダイレクト
+      redirect_to items_path(user_id: params[:user_id])
+    end
 end
