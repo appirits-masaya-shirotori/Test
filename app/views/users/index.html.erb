@@ -1,0 +1,12 @@
+<h1>ユーザー登録</h1>
+
+<%= form_with(model: User.new, local: true) do |form| %>
+  <div>
+    <%= form.label :name, "ユーザー名" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit "登録" %>
+  </div>
+<% end %>

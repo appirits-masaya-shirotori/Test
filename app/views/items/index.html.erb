@@ -1,11 +1,7 @@
-<!-- app/views/items/index.html.erb -->
-<h1>Items</h1>
+<h1>アイテム一覧</h1>
 
-<p>w</p>
-<p>Current User: <%= @current_user.name %></p>
-
-<ul>
-  <% @items.each do |item| %>
-    <li><%= item.title %>: <%= item.description %></li>
-  <% end %>
-</ul>
+<%= form_with(url: select_user_items_path, method: :post, local: true) do |form| %>
+  <%= form.label :user_id, "ユーザー選択:" %>
+  <%= form.collection_select :user_id, User.all, :id, :name, include_blank: true %>
+  <%= form.submit "選択" %>
+<% end %>
