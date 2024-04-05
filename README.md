@@ -5,10 +5,10 @@ Home
 アイテム登録
 ユーザーごとのアイテム一覧表示　← 一覧出ない
 
- ## 問題点
- ベージの戻るボタンUIが無い
-### 
+## 問題点
+ベージの戻るボタンUIが無い
 
+## その他
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
