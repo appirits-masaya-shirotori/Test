@@ -1,22 +1,15 @@
-<h1>アイテム登録</h1>
+<%= form_with model: @item, local: true do |form| %>
 
-<%= form_with(model: Item.new, local: true) do |form| %>
-  <div>
-    <%= form.label :title, "タイトル" %>
-    <%= form.text_field :title %>
-  </div>
+  <%= form.label :user_id, "ユーザー選択:", class: "form-label" %>
+  <%= form.collection_select :user_id, User.all, :id, :name, {include_blank: true}, {class: "form-control"} %>
 
-  <div>
-    <%= form.label :description, "説明" %>
-    <%= form.text_area :description %>
-  </div>
+  <%= form.label :item_master_id, "ItemMaster 選択:", class: "form-label mt-2" %>
+  <%= form.collection_select :item_master_id, ItemMaster.all, :id, :name, {include_blank: true}, {class: "form-control"} %>
 
-  <div>
-    <%= form.label :user_id, "ユーザー" %>
-    <%= form.collection_select :user_id, User.all, :id, :name, prompt: "選択してください" %>
-  </div>
+  <%= form.label :quantity, "個数:", class: "form-label mt-2" %>
+  <%= form.number_field :quantity, in: 1..1000, step: 1, class: "form-control" %>
 
-  <div>
-    <%= form.submit "登録" %>
-  </div>
+  <%= form.submit "登録", class: "btn btn-success mt-2" %>
 <% end %>
+</ul>
+<%= link_to 'ホームに戻る', root_path, class: 'btn btn-primary mt-3' %>

@@ -1,37 +1,26 @@
 class ItemsController < ApplicationController
-  def index
-    if params[:user_id]
-      @user = User.find(params[:user_id])
-      @items = @user.items
-    else
-      @items = Item.all
-    end
-  end
-
   def new
     @item = Item.new
+    @items = Item.all
   end
 
   def create
     @item = Item.new(item_params)
+    puts @item.inspect
     if @item.save
-      redirect_to new_item_path, notice: "アイテムが登録されました。"
+        redirect_to new_item_path, notice: 'アイテムが正常に作成されました。'
     else
       render :new
     end
   end
-
-  def select_user
-    redirect_to items_path(user_id: params[:user_id])
+  
+  def index
+    @items = Item.all
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :user_id)
+    params.require(:item).permit(:user_id, :item_master_id, :quantity)
   end
-  def select_user
-      # フォームから送信されたユーザーIDを使用してリダイレクト
-      redirect_to items_path(user_id: params[:user_id])
-    end
 end

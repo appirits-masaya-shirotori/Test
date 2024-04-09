@@ -2,8 +2,12 @@
 
 one:
   name: MyString
-  health: 1
+  description: 1
+  effect: MyString
+  Effect: MyString
 
 two:
   name: MyString
-  health: 1
+  description: 1
+  effect: MyString
+  Effect: MyString
