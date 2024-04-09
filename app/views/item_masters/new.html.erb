@@ -1,0 +1,33 @@
+<%= form_with model: @item_master, local: true do |form| %>
+  <% if @item_master.errors.any? %>
+    <div>
+      <h2><%= pluralize(@item_master.errors.count, "error") %>が検出されました。</h2>
+      <ul>
+      <% @item_master.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :rank %>
+    <%= form.text_field :rank %>
+  </div>
+  
+    <div>
+    <%= form.label :code %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div>
+    <%= form.submit "登録" %>
+  </div>
+<% end %>
+</ul>
+<%= link_to 'ホームに戻る', root_path, class: 'btn btn-primary mt-3' %>

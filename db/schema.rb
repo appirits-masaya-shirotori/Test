@@ -10,14 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_05_002036) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_09_062804) do
+  create_table "item_masters", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "code"
+    t.string "name"
+    t.string "rank"
+  end
+
   create_table "items", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.integer "quantity"
+    t.integer "item_master_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -26,6 +33,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_002036) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "health"
+    t.string "password_digest"
   end
 
   add_foreign_key "items", "users"

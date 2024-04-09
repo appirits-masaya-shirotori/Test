@@ -11,8 +11,3 @@
 # ユーザーデータの作成
 user1 = User.create!(name: "山田太郎")
 user2 = User.create!(name: "鈴木一郎")
-
-# Itemデータの作成
-Item.create!(name: "item1", user: user1)
-Item.create!(name: "item1", user: user1)
-Item.create!(name: "item1", user: user2)
