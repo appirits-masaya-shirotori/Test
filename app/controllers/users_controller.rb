@@ -37,12 +37,13 @@ class UsersController < ApplicationController
   
   #<!-- destroy -->
     def destroy
-      @user = User.find(params[:id])
-      @user.destroy
-      redirect_to users_url, notice: 'ユーザーが削除されました。'
+        @user = User.find(params[:id])
+        @user.destroy
+        redirect_to users_url, notice: 'ユーザーが削除されました。'
     rescue ActiveRecord::RecordNotFound
-      redirect_to users_url, alert: 'ユーザーが見つかりませんでした。'
+        redirect_to users_url, alert: 'ユーザーが見つかりませんでした。'
     end
+    
     private
 
     #<!-- params -->
