@@ -5,9 +5,9 @@ class ItemMastersController < ApplicationController
     end
     #<!-- show -->
     def show
-      @item_master = ItemMaster.find(params[:id])
+        @item_master = ItemMaster.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      redirect_to root_path, alert: "指定されたアイテムマスターが見つかりません。"
+        redirect_to root_path, alert: "指定されたアイテムマスターが見つかりません。"
     end
     
     #<!-- new -->
@@ -37,9 +37,9 @@ class ItemMastersController < ApplicationController
     
     #<!-- destroy -->
     def destroy
-      @item_master = ItemMaster.find(params[:id])
-      @item_master.destroy
-      redirect_to item_masters_url, notice: 'アイテムマスターが削除されました。'
+        @item_master = ItemMaster.find(params[:id])
+        @item_master.destroy
+        redirect_to item_masters_url, notice: 'アイテムマスターが削除されました。'
     end
 
     
