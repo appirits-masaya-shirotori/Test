@@ -22,7 +22,6 @@ class ItemMastersController < ApplicationController
     #<!-- create -->
     def create
         @item_master = ItemMaster.new(item_master_params)
-        #puts @item_master.inspect
         if @item_master.save
             redirect_to new_item_master_path, notice: 'アイテムが正常に登録されました。'
         else
