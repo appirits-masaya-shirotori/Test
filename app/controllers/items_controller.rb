@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
     #<!-- create -->
     def create
         @item = Item.new(item_params)
-        # puts @item.inspect
         if @item.save
             redirect_to new_item_path, notice: 'アイテムが正常に作成されました。'
         else
@@ -36,9 +35,9 @@ class ItemsController < ApplicationController
     #<!-- updata -->
     #<!-- destroy -->
     def destroy
-      @item = Item.find(params[:id])
-      @item.destroy
-      redirect_to items_url, notice: 'アイテムが削除されました。'
+        @item = Item.find(params[:id])
+        @item.destroy
+        redirect_to items_url, notice: 'アイテムが削除されました。'
     end
     private
     def item_params
