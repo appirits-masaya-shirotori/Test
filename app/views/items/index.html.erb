@@ -1,20 +1,33 @@
-<%= form_with(url: select_user_items_path, method: :post, local: true, html: {class: "form-group"}) do |form| %>
-  <%= form.label :user_id, "ユーザー選択:", class: "form-label" %>
-  <%= form.collection_select :user_id, User.all, :id, :name, {include_blank: true}, {class: "form-control"} %>
+<%= form_with url: items_path, method: :get, local: true do |form| %>
+  <%= form.label :user_id, "ユーザーを選択:" %>
+  <%= form.collection_select :user_id, User.all, :id, :name, include_blank: true %>
+  <%= form.submit "フィルター" %>
 <% end %>
-
-<%= form_with(url: select_user_item_masters_path, method: :post, local: true, html: {class: "form-group"}) do |form| %>
-  <%= form.label :user_id, "ItemMaster 選択:", class: "form-label" %>
-  <%= form.collection_select :user_id, ItemMaster.all, :id, :name, {include_blank: true}, {class: "form-control"} %>
-  <%= form.label :quantity, "個数:", class: "form-label mt-2" %>
-  <%= form.number_field :quantity, in: 1..100, step: 1, class: "form-control" %>
-
-  <%= form.submit "登録", class: "btn btn-success mt-2" %>
-<% end %>
-
-<ul class="list-group mt-3">
-  <% @items.each do |item| %>
-    <li class="list-group-item"><%= item.name %>: <%= item.description %></li>
-  <% end %>
-</ul>
 <%= link_to 'ホームに戻る', root_path, class: 'btn btn-primary mt-3' %>
+
+<% if @user %>
+  <h2>選択されたユーザー: <%= @user.name %></h2>
+<% else %>
+  <h2>ユーザーを選択してください。</h2>
+<% end %>
+<h2>アイテムリスト</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ユーザー名</th>
+      <th>アイテム名</th>
+      <th>数量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.user&.name %></td>
+        <td><%= item.item_master&.name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= link_to '詳細',item_master_path(item.item_master), class: 'btn btn-info' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
