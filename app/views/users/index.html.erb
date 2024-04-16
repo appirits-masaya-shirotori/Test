@@ -1,11 +1,16 @@
-<h2>ユーザー削除。</h2>
-<%= link_to 'ホームに戻る', root_path, class: 'btn btn-primary mt-3' %>
-<br>
-<br>
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= link_to '削除', user_path(user), method: :delete, data: { confirm: 'このユーザーを削除しますか？' } %></td>
-    <br>
-  </tr>
+<!-- app/views/users/new.html.erb -->
+<%= form_with model: @user, local: true do |form| %>
+  <%= form.label :username %>
+  <%= form.text_field :username %>
+
+  <%= form.label :email %>
+  <%= form.email_field :email %>
+
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+
+  <%= form.label :password_confirmation %>
+  <%= form.password_field :password_confirmation %>
+
+  <%= form.submit "登録" %>
 <% end %>
