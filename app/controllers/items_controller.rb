@@ -33,13 +33,7 @@ class ItemsController < ApplicationController
             render :new
         end
     end
-    #<!-- updata -->
-    #<!-- destroy -->
-    def destroy
-      @item = Item.find(params[:id])
-      @item.destroy
-      redirect_to items_url, notice: 'アイテムが削除されました。'
-    end
+
     private
     def item_params
         params.require(:item).permit(:user_id, :item_master_id, :quantity)

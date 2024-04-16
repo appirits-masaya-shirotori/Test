@@ -30,19 +30,6 @@ class ItemMastersController < ApplicationController
         end
     end
     
-    #<!-- updata -->
-    #
-    #
-    #
-    
-    #<!-- destroy -->
-    def destroy
-      @item_master = ItemMaster.find(params[:id])
-      @item_master.destroy
-      redirect_to item_masters_url, notice: 'アイテムマスターが削除されました。'
-    end
-
-    
     private
     
     #<!-- params -->
