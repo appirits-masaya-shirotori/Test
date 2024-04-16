@@ -1,27 +1,53 @@
 
 class UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.new(user_params)
-    puts @user.inspect
-    if @user.save
-      redirect_to new_user_path, notice: "ユーザーが登録されました。"
-    else
-      render :new
+    #<!-- index -->
+    def index
+        @users = User.all
     end
-  end
+    
+    #<!--show -->
+    #
+    #
+    
+    #<!-- new -->
+    def new
+        @user = User.new
+    end
+    
+    #<!-- edit -->
+    #
+    #
+    #
 
-  def index
-    @users = User.all
-  end
+    #<!-- create -->
+    def create
+        @user = User.new(user_params)
+        # puts @user.inspect
+        if @user.save
+            redirect_to new_user_path, notice: "ユーザーが登録されました。"
+        else
+            render :new
+        end
+    end
+  #<!-- updata -->
+  #
+  #
+  #
+  
+  
+  #<!-- destroy -->
 
-  private
+    def destroy
+        user = User.find(params[:id])
+        user.destroy
+        redirect_to users_path, notice: 'ユーザーが正常に削除されました。'
+    end
+    
+    private
 
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
+    #<!-- params -->
+    def user_params
+        params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
 end
 

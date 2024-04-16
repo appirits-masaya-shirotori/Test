@@ -1,0 +1,18 @@
+<h1>アイテムマスター詳細</h1>
+
+<p>
+  <strong>ID:</strong>
+  <%= @item_master.id %>
+</p>
+
+<p>
+  <strong>名前:</strong>
+  <%= @item_master.name %>
+</p>
+
+<p>
+  <strong>ランク:</strong>
+  <%= @item_master.rank %>
+</p>
+
+<%= link_to 'アイテム一覧へ', items_path, class: 'btn btn-primary' %>
