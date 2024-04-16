@@ -1,39 +1,30 @@
 class ItemsController < ApplicationController
-    def select_user
-    end
-    #<!-- index -->
+    # index アクション
     def index
         if params[:user_id].present?
             @user = User.find_by(id: params[:user_id])
-            @items = Item.includes(:user, :item_master).where(user_id: params[:user_id])
+            @items = @user ? @user.items.includes(:item_master) : Item.none
         else
             @items = Item.includes(:user, :item_master).all
         end
     end
     
-    #<!-- new -->
+    # new アクション
     def new
         @item = Item.new
-        @items = Item.all
     end
-    #<!-- show -->
     
-    #<!-- edit -->
-    #
-    #
-    #
-    
-    #<!-- create -->
+    # create アクション
     def create
         @item = Item.new(item_params)
         if @item.save
-            redirect_to new_item_path, notice: 'アイテムが正常に作成されました。'
+            redirect_to items_path, notice: 'アイテムが正常に作成されました。'
         else
             render :new
         end
     end
-    #<!-- updata -->
-    #<!-- destroy -->
+    
+    # destroy アクション
     def destroy
         item = Item.find(params[:id])
         item.destroy
