@@ -1,11 +1,13 @@
 <!-- app/views/items/show.html.erb -->
 <h1>アイテム詳細</h1>
 <p>
+  <strong>名前:</strong>
+  <%= @item.name %>
   <strong>アイテムマスター詳細:</strong>
   <ul>
-    <li>ID: <%= @item.item_master.id %></li>
-    <li>名前: <%= @item.item_master.name %></li>
-    <li>説明: <%= @item.item_master.description %></li>
+    <li>ID: <%= @item.item_master_id %></li>
+    <li>名前: <%= @item.item_master_name %></li>
+    <li>説明: <%= @item.item_master_description %></li>
   </ul>
 </p>
 
