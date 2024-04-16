@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     def new
         @item = Item.new
     end
-    
+
     # create アクション
     def create
         @item = Item.new(item_params)
@@ -23,15 +23,16 @@ class ItemsController < ApplicationController
             render :new
         end
     end
-    
+
     # destroy アクション
     def destroy
         item = Item.find(params[:id])
         item.destroy
         redirect_to items_path, notice: 'アイテムが正常に削除されました。'
     end
-    
+
     private
+
     def item_params
         params.require(:item).permit(:user_id, :item_master_id, :quantity)
     end
