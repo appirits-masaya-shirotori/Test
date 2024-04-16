@@ -2,8 +2,13 @@ class ItemsController < ApplicationController
     # index アクション
     def index
         if params[:user_id].present?
-            @user = User.find_by(id: params[:user_id])
-            @items = @user ? @user.items.includes(:item_master) : Item.none
+            begin
+                @user = User.find(params[:user_id])
+                @items = @user.items.includes(:item_master)
+            rescue ActiveRecord::RecordNotFound
+                @items = Item.none
+                flash[:alert] = '指定されたユーザーが見つかりません。'
+            end
         else
             @items = Item.includes(:user, :item_master).all
         end
@@ -26,9 +31,13 @@ class ItemsController < ApplicationController
 
     # destroy アクション
     def destroy
-        item = Item.find(params[:id])
-        item.destroy
-        redirect_to items_path, notice: 'アイテムが正常に削除されました。'
+        begin
+            item = Item.find(params[:id])
+            item.destroy
+            redirect_to items_path, notice: 'アイテムが正常に削除されました。'
+        rescue ActiveRecord::RecordNotFound
+            redirect_to items_path, alert: '指定されたアイテムが見つかりません。'
+        end
     end
 
     private
