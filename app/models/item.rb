@@ -4,6 +4,7 @@ class Item < ApplicationRecord
 
   before_create :merge_with_existing_item
   after_save :remove_if_zero_quantity
+  delegate :id, :name, :description, to: :item_master, prefix: true
 
   private
 
