@@ -1,7 +1,15 @@
-<h1 class="menu-title">メインメニュー</h1>
-<ul class="menu-list">
-  <li class="menu-item"><%= link_to 'ユーザー登録', new_user_path %></li>
-  <li class="menu-item"><%= link_to 'アイテム登録', new_item_master_path %></li>
-  <li class="menu-item"><%= link_to 'アイテム所持', new_item_path %></li>
-  <li class="menu-item"><%= link_to 'アイテム一覧', items_path %></li>
+<!--
+<%#　<li><%= link_to テキスト",リンク先のパス %></li>　%>
+リンク先のパス -> rbファイル名_ファイル名_path
+(例は下に記述)
+-->
+
+
+<h1>メインメニュー</h1>
+<ul>
+  <li><%= link_to 'ユーザー登録', new_user_path %></li>
+  <li><%= link_to 'アイテム_マスター登録', new_item_master_path %></li>
+  <li><%= link_to 'アイテム所持', new_item_path %></li>
+  <li><%= link_to 'アイテム一覧', item_masters_path %></li>
 </ul>
+
