@@ -1,12 +1,9 @@
-<!-- app/views/items/show.html.erb -->
-<h1>アイテム詳細</h1>
 <p>
-  <strong>アイテムマスター詳細:</strong>
-  <ul>
-    <li>ID: <%= @item.item_master.id %></li>
-    <li>名前: <%= @item.item_master.name %></li>
-    <li>説明: <%= @item.item_master.description %></li>
-  </ul>
+  <strong>名前:</strong>
+  <%= @item.name %>
 </p>
 
-<%= link_to '一覧に戻る', items_path, class: 'btn btn-primary' %>
+<p>
+  <strong>説明:</strong>
+  <%= @item.description %>
+</p>

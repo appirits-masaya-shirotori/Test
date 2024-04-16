@@ -9,9 +9,6 @@
       </ul>
     </div>
   <% end %>
-  <div class="card-header">
-  <h1 class="card-title">アイテム登録</h1>
-  </div>
 
   <div>
     <%= form.label :name %>
@@ -32,7 +29,5 @@
     <%= form.submit "登録" %>
   </div>
 <% end %>
-<ul class="menu-list">
-　<li class="menu-item"><%= link_to 'ホームに戻る', root_path %></li>
-  <li class="menu-item"><%= link_to 'アイテム所持', new_item_path %></li>
 </ul>
+<%= link_to 'ホームに戻る', root_path, class: 'btn btn-primary mt-3' %>

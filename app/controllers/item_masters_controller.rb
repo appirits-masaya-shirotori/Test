@@ -1,7 +1,7 @@
 class ItemMastersController < ApplicationController
     #<!-- index -->
     def index
-        @item_masters = ItemMaster.all
+      @item_masters = ItemMaster.all
     end
     #<!-- show -->
     def show
@@ -12,7 +12,7 @@ class ItemMastersController < ApplicationController
     
     #<!-- new -->
     def new
-        @item_master = ItemMaster.new
+      @item_master = ItemMaster.new
     end
     
     #<!-- edit -->
@@ -21,19 +21,18 @@ class ItemMastersController < ApplicationController
     #
     #<!-- create -->
     def create
-        @item_master = ItemMaster.new(item_master_params)
-        #puts @item_master.inspect
-        if @item_master.save
-            redirect_to new_item_master_path, notice: 'アイテムが正常に登録されました。'
-        else
-            render :new
-        end
+      @item_master = ItemMaster.new(item_master_params)
+      if @item_master.save
+        redirect_to new_item_master_path, notice: 'アイテムが正常に登録されました。'
+      else
+        render :new
+      end
     end
     
     private
     
     #<!-- params -->
     def item_master_params
-        params.require(:item_master).permit(:id, :name, :rank, :code)
+      params.require(:item_master).permit(:id, :name, :rank, :code)
     end
 end
