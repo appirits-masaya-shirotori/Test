@@ -1,11 +1,7 @@
-<h2>ユーザー削除。</h2>
-<%= link_to 'ホームに戻る', root_path, class: 'btn btn-primary mt-3' %>
-<br>
+<h2>ユーザーリスト</h2>
+  <%= link_to 'ユーザー登録に戻る', new_user_path %></li>
+<ul>
   <% @users.each do |user| %>
-    <tr>
-      <td><%= user.id %></td>
-      <td><%= user.name %></td>
-      <br>
-    </tr>
+    <li><%= user.id %> - <%= user.name %></li>
   <% end %>
-
+</ul>

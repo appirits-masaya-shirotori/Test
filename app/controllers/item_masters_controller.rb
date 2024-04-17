@@ -3,7 +3,7 @@ class ItemMastersController < ApplicationController
 
   # index アクション
   def index
-    @item_masters = ItemMaster.all
+    @item_masters = ItemMaster.select(:id, :name, :rank, :code)
   end
 
   # show アクション

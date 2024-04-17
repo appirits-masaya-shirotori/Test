@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   # index アクション
   def index
     @user = User.includes(items: :item_master).find_by(id: params[:user_id])
-      @items = @user ? @user.items : Item.none
+    @items = @user ? @user.items : Item.none
   end
 
   # show アクション

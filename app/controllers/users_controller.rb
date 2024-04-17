@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   # index アクション
   def index
-    @users = User.all
+    @users = User.select(:id, :name)
   end
   
   # new アクション

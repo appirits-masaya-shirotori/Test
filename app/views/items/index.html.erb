@@ -5,7 +5,7 @@
 <% end %>
 <%= link_to 'ホームに戻る', root_path, class: 'btn btn-primary mt-3' %>
 
-<<% if @user %>
+<% if @user %>
   <h2>選択されたユーザー: <%= @user.name %></h2>
 <% else %>
   <h2>ユーザーを選択してください。</h2>
