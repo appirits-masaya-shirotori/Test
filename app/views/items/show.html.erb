@@ -1,9 +1,6 @@
-<p>
-  <strong>名前:</strong>
-  <%= @item.name %>
-</p>
-
-<p>
-  <strong>説明:</strong>
-  <%= @item.description %>
-</p>
+<h1>アイテムマスター詳細</h1>
+<p><strong>Item ID:</strong> <%= @item.item_master_id %></p>
+<p><strong>Name:</strong> <%= @item.item_master_name %></p>
+<p><strong>Rank:</strong> <%= @item.item_master_rank %></p>
+<p><strong>Code:</strong> <%= @item.item_master_code %></p>
+<%= link_to '戻る', items_path %>

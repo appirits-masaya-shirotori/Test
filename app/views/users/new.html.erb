@@ -4,7 +4,7 @@
     <div class="col-md-6 offset-md-3">
       <div class="card">
         <div class="card-header">
-          <h5 class="card-title">ユーザー登録</h5>
+          <h1 class="card-title">ユーザー登録</h1>
         </div>
         <div class="card-body">
           <%= form_with model: @user, local: true, html: { class: "needs-validation", novalidate: "" } do |form| %>
@@ -36,4 +36,8 @@
   </div>
 </div>
 
-<%= link_to 'ホームに戻る', root_path, class: 'btn btn-primary mt-3' %>
+<ul class="menu-list">
+  <li class="menu-item"><%= link_to 'ホームに戻る', root_path %></li>
+  <li class="menu-item"><%= link_to 'アイテム登録', new_item_master_path %></li>
+  <%= link_to 'ユーザー一覧', users_path %>
+</ul>

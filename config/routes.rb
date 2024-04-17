@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
-  
   resources :users, only: [:new, :create, :index]
-  resources :item_masters, only: [:index, :new, :create]
-  resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy]
-
-#    collection do
-#      post 'select_user', to: 'items#create', as: 'select_user'
-#    end
-#  end
+  resources :item_masters, only: [:new, :create]
+  resources :items, only: [:index, :new, :create, :show]
 end

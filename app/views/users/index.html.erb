@@ -1,16 +1,7 @@
-<!-- app/views/users/new.html.erb -->
-<%= form_with model: @user, local: true do |form| %>
-  <%= form.label :username %>
-  <%= form.text_field :username %>
-
-  <%= form.label :email %>
-  <%= form.email_field :email %>
-
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-
-  <%= form.label :password_confirmation %>
-  <%= form.password_field :password_confirmation %>
-
-  <%= form.submit "登録" %>
-<% end %>
+<h2>ユーザーリスト</h2>
+  <%= link_to 'ユーザー登録に戻る', new_user_path %></li>
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.id %> - <%= user.name %></li>
+  <% end %>
+</ul>
