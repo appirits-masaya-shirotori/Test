@@ -1,11 +1,11 @@
 <%= form_with url: items_path, method: :get, local: true do |form| %>
   <%= form.label :user_id, "ユーザーを選択:" %>
-  <%= form.collection_select :user_id, User.all, :id, :name, include_blank: true %>
+  <%= form.collection_select :user_id, @users, :id, :name, include_blank: true %>
   <%= form.submit "フィルター" %>
 <% end %>
 <%= link_to 'ホームに戻る', root_path, class: 'btn btn-primary mt-3' %>
 
-<% if @user %>
+<<% if @user %>
   <h2>選択されたユーザー: <%= @user.name %></h2>
 <% else %>
   <h2>ユーザーを選択してください。</h2>
@@ -23,11 +23,11 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.user&.name %></td>
-        <td><%= item.item_master&.name %></td>
+        <td><%= item.user.name %></td>
+        <td><%= item.item_master.name %></td>
         <td><%= item.quantity %></td>
         <td><%= link_to '詳細を見る', item_path(item), class: 'btn btn-primary' %></td>
       </tr>
     <% end %>
-  </tbody>
+</tbody>
 </table>
