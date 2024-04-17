@@ -43,26 +43,3 @@ class ItemMastersController < ApplicationController
     params.require(:item_master).permit(:name, :rank, :code)
   end
 end
-
-#<!--
-#1. before_action :set_item_master
-#  before_actionは特定のアクションが実行される前に特定のメソッド（この場合はset_item_master）を呼び出します。
-#  only: [:show, :destroy]はこのbefore_actionがshowとdestroyアクションのみに適用されることを意味します。
-#  set_item_masterメソッドは、指定されたIDを持つアイテムマスターをデータベースから検索し、@item_masterインスタンス変数に格納します。アイテムマスターが見つからない場合は、ルートパスにリダイレクトし、警告メッセージを表示します。
-#
-#2. index アクション
-#  このアクションはすべてのアイテムマスターを取得し、@item_mastersインスタンス変数に格納します。
-#  ビューではこの変数を使用して、登録されている全アイテムマスターのリストを表示できます。
-#
-#3. show アクション
-#  特定のアイテムマスターの詳細を表示します。詳細はset_item_masterメソッドによって@item_masterに設定されています。
-#
-#4. new アクション
-#  新しいアイテムマスターを作成するためのフォームを表示するために使用されます。
-#  ItemMaster.newは新しいItemMasterオブジェクトを作成し、@item_masterインスタンス変数に格納します。
-#
-#5. create アクション
-#  フォームから送信されたデータを使用して新しいアイテムマスターを作成します。
-#  item_master_paramsメソッドを通じて、許可されたパラメータのみを取得します。
-#
-#-->
