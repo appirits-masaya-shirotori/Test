@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  # index アクション
+  def select_user
+  end  # index アクション
   def index
     if params[:user_id].present?
       begin
@@ -13,7 +14,10 @@ class ItemsController < ApplicationController
       @items = Item.includes(:user, :item_master).all
     end
   end
-  
+  def show
+      @item = Item.find(params[:id])
+  end
+
   # new アクション
   def new
     @item = Item.new
@@ -39,6 +43,7 @@ class ItemsController < ApplicationController
       end
     end
   end
+  
   
   # destroy アクション
   def destroy

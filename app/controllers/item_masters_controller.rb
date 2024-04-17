@@ -5,7 +5,7 @@ class ItemMastersController < ApplicationController
   end
   #<!-- show -->
   def show
-    @item_master = ItemMaster.find(params[:id])
+    @item = Item.find(id: params[:id])
     rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "指定されたアイテムマスターが見つかりません。"
   end
@@ -19,11 +19,8 @@ class ItemMastersController < ApplicationController
   #<!-- create -->
   def create
     @item_master = ItemMaster.new(item_master_params)
-    if @item_master.save
-      redirect_to new_item_master_path, notice: 'アイテムが正常に登録されました。'
-    else
-      render :new
-    end
+    rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "指定されたアイテムマスターが見つかりません。"
   end
   
   #<!-- destroy -->
