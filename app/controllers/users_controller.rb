@@ -1,16 +1,17 @@
-
 class UsersController < ApplicationController
-  #<!-- index -->
+  before_action :set_user, only: [:destroy]
+  
+  # index アクション
   def index
-    @users = User.all
+    @users = User.select(:id, :name)
   end
   
-  #<!-- new -->
+  # new アクション
   def new
     @user = User.new
   end
   
-  #<!-- create -->
+  # create アクション
   def create
     @user = User.new(user_params)
     if @user.save
@@ -19,19 +20,22 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  #<!-- destroy -->
   
+  # destroy アクション
   def destroy
-    user = User.find(params[:id])
-    user.destroy
+    @user.destroy
     redirect_to users_path, notice: 'ユーザーが正常に削除されました。'
   end
   
   private
   
-  #<!-- params -->
+  def set_user
+    @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+    redirect_to users_path, alert: "指定されたユーザーが見つかりません。"
+  end
+  
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
-

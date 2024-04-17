@@ -1,11 +1,7 @@
-<h2>ユーザー削除。</h2>
-<%= link_to 'ホームに戻る', root_path, class: 'btn btn-primary mt-3' %>
-<br>
-<br>
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= link_to '削除', user_path(user), method: :delete, data: { confirm: 'このユーザーを削除しますか？' } %></td>
-    <br>
-  </tr>
-<% end %>
+<h2>ユーザーリスト</h2>
+  <%= link_to 'ユーザー登録に戻る', new_user_path %></li>
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.id %> - <%= user.name %></li>
+  <% end %>
+</ul>

@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-    belongs_to :user
-    belongs_to :item_master
-    # belongs_to :item_master, foreign_key: 'id', primary_key: 'id'
+  belongs_to :user
+  belongs_to :item_master
+  delegate :id, :name, :rank, :code, to: :item_master, prefix: true
 end
