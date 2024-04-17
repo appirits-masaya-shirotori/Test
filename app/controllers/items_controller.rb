@@ -4,8 +4,8 @@ class ItemsController < ApplicationController
 
   # index アクション
   def index
-    @user = User.find_by(id: params[:user_id])
-    @items = @user ? @user.items.includes(:item_master) : Item.none
+    @user = User.includes(items: :item_master).find_by(id: params[:user_id])
+      @items = @user ? @user.items : Item.none
   end
 
   # show アクション
@@ -38,10 +38,11 @@ class ItemsController < ApplicationController
     redirect_to items_path, alert: '指定されたアイテムが見つかりません。'
   end
   
+  
   private
   
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.includes(:item_master).find(params[:id])
   end
 
   def set_users
